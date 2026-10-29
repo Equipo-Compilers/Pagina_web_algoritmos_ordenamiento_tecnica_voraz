@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Card from "./Card";
 import AlgorithmInterface from "./Sort_Algorithms/AlgorithmInterface";
 import GreedyInterface from "./Greedy_Algorithms/GreedyInterface";
+import HoffmanInterface from "./Greedy_Algorithms/HoffmanInterface";
 
 function Home() {
     return (
@@ -17,12 +18,21 @@ function Home() {
                     backgroundColor="#1f2937"
                     tags={["Bubble Sort", "Quick Sort", "Merge Sort"]}
                     route="/algoritmos"
+                    animationType="ordenamiento"
                 />
                 <Card
-                    title="Algoritmos voraces"
+                    title="Algoritmo de Huffman"
                     backgroundColor="#374151"
-                    tags={["Greedy"]}
+                    tags={["Huffman"]}
+                    route="/algoritmo_huffman"
+                    animationType="huffman"
+                />
+                <Card
+                    title="Compresor de libros"
+                    backgroundColor="#374151"
+                    tags={["Compresor"]}
                     route="/algoritmos_voracez"
+                    animationType="compresor"
                 />
             </div>
         </div>
@@ -36,6 +46,7 @@ export default function App() {
         <Route path="/Pagina_web_algoritmos_ordenamiento_tecnica_voraz/" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/algoritmos" element={<AlgorithmInterface />} />
+        <Route path="/algoritmo_huffman" element={<HoffmanInterface/>} />
         <Route path="/algoritmos_voracez" element={<GreedyInterface />} />
       </Routes>
     </BrowserRouter>
