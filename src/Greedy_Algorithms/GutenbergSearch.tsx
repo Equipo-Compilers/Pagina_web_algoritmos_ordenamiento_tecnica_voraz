@@ -29,8 +29,7 @@ export default function GutenbergSearch({ onTextLoaded }: GutenbergSearchProps) 
   const [failReasons, setFailReasons] = useState<string[]>([]);
   const [loadedTitle, setLoadedTitle] = useState("");
   
-  // NUEVO ESTADO para guardar el texto leído y mostrarlo en el cuadro
-  const [textoContenido, setTextoContenido] = useState("");
+  
 
   const searchIdRef = useRef(0);
 
@@ -78,9 +77,7 @@ export default function GutenbergSearch({ onTextLoaded }: GutenbergSearchProps) 
     setFailedBook(null);
     try {
       const text = await downloadBookText(book);
-      
-      // Guardamos una muestra o el texto completo en el estado para visualizarlo
-      setTextoContenido(text); 
+   
 
       onTextLoaded(text, safeFileName(book.title));
       setLoadedTitle(book.title);
@@ -182,19 +179,7 @@ export default function GutenbergSearch({ onTextLoaded }: GutenbergSearchProps) 
         </>
       )}
 
-      {/* NUEVO CUADRO PARA MOSTRAR EL TEXTO CARGADO / COMPRIMIDO */}
-      {textoContenido && (
-        <div className="gutenberg-preview-box">
-          <h3>Texto leído / Previsualización:</h3>
-          <textarea
-            className="gutenberg-textarea-preview"
-            value={textoContenido}
-            readOnly
-            rows={6}
-            placeholder="El contenido del archivo aparecerá aquí..."
-          />
-        </div>
-      )}
+
     </section>
   );
 }
